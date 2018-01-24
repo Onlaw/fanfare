@@ -9,8 +9,11 @@ type Props = {
   startOpen?: boolean,
   onClick: (id: string | number) => void,
   onKeyDown: () => void,
-  render: ({ getButtonProps: Function, getPanelProps: Function }) => Node,
-  setHeaderRef: (id: string | number, ref: HTMLButtonElement) => void,
+  render: ({
+    getButtonProps: Function,
+    getPanelProps: Function,
+  }) => Node,
+  setRef: (id: string | number, ref: HTMLButtonElement) => void,
 }
 
 export class Item extends PureComponent<Props> {
@@ -23,13 +26,7 @@ export class Item extends PureComponent<Props> {
   }
 
   getButtonProps = () => {
-    const {
-      activeAccordions,
-      id,
-      onClick,
-      onKeyDown,
-      setHeaderRef,
-    } = this.props
+    const { activeAccordions, id, onClick, onKeyDown, setRef } = this.props
     const isOpen = activeAccordions.includes(id)
 
     return {
@@ -41,8 +38,7 @@ export class Item extends PureComponent<Props> {
         onClick(id)
       },
       onKeyDown,
-      ref: (ref: HTMLButtonElement) => setHeaderRef(id, ref),
-      setHeaderRef,
+      setRef,
     }
   }
 

@@ -184,7 +184,7 @@ function (_PureComponent) {
           }
         }
       }
-    }), Object.defineProperty(_assertThisInitialized(_this), "addRef", {
+    }), Object.defineProperty(_assertThisInitialized(_this), "setRef", {
       configurable: true,
       enumerable: true,
       writable: true,
@@ -261,7 +261,7 @@ function (_PureComponent) {
           activeAccordions: activeAccordions,
           onClick: _this.handleClick,
           onKeyDown: _this.handleKeyDown,
-          setHeaderRef: _this.addRef
+          setRef: _this.setRef
         });
       }
     }), _temp));
@@ -277,11 +277,8 @@ function (_PureComponent) {
       return React.createElement(Accordion, {
         className: className
       }, render({
-        getItemProps: this.getItemProps,
         activeAccordions: activeAccordions,
-        onClick: this.handleClick,
-        onKeyDown: this.handleKeyDown,
-        setHeaderRef: this.addRef
+        getItemProps: this.getItemProps
       }));
     }
   }]);
@@ -314,7 +311,7 @@ function (_PureComponent) {
             id = _this$props.id,
             onClick = _this$props.onClick,
             onKeyDown = _this$props.onKeyDown,
-            setHeaderRef = _this$props.setHeaderRef;
+            setRef = _this$props.setRef;
         var isOpen = activeAccordions.includes(id);
         return {
           'aria-controls': "accordion-panel-".concat(id),
@@ -335,20 +332,8 @@ function (_PureComponent) {
             onClick(id);
           }),
           onKeyDown: onKeyDown,
-          ref: function (_ref2) {
-            function ref(_x) {
-              return _ref2.apply(this, arguments);
-            }
-
-            ref.toString = function () {
-              return _ref2.toString();
-            };
-
-            return ref;
-          }(function (ref) {
-            return setHeaderRef(id, ref);
-          }),
-          setHeaderRef: setHeaderRef
+          // ref: (ref: HTMLButtonElement) => setRef(id, ref),
+          setRef: setRef
         };
       }
     }), Object.defineProperty(_assertThisInitialized(_this), "getPanelProps", {
@@ -394,13 +379,29 @@ function (_PureComponent) {
   return Item;
 }(PureComponent);
 
-var Header = function Header(_ref) {
-  var children = _ref.children,
-      className = _ref.className;
-  return React.createElement("dt", {
-    className: className
-  }, children);
-};
+var Header =
+/*#__PURE__*/
+function (_PureComponent) {
+  _inherits(Header, _PureComponent);
+
+  function Header() {
+    _classCallCheck(this, Header);
+    return _possibleConstructorReturn(this, (Header.__proto__ || Object.getPrototypeOf(Header)).apply(this, arguments));
+  }
+
+  _createClass(Header, [{
+    key: "render",
+    value: function render() {
+      var _props = this.props,
+          children = _props.children,
+          className = _props.className;
+      return React.createElement("dt", {
+        className: className
+      }, children);
+    }
+  }]);
+  return Header;
+}(PureComponent);
 
 var Panel = function Panel(_ref) {
   var children = _ref.children,

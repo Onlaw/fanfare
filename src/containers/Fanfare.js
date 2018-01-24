@@ -20,11 +20,11 @@ export class Fanfare extends PureComponent<Props, State> {
 
   accordionItems = {}
 
-  handleClick = (id: string | number) => {
+  handleClick = (id: string | number): void => {
     this.toggleAccordion(id)
   }
 
-  handleKeyDown = (e: SyntheticKeyboardEvent<*>) => {
+  handleKeyDown = (e: SyntheticKeyboardEvent<*>): void => {
     // @todo: There has to be a better way to do this!
     const focusedElement = document.activeElement
     let focusedAccordion
@@ -58,7 +58,7 @@ export class Fanfare extends PureComponent<Props, State> {
     }
   }
 
-  addRef = (id: string | number, ref: HTMLButtonElement): void => {
+  setRef = (id: string | number, ref: HTMLButtonElement): void => {
     const existingReference = Object.keys(this.accordionItems).filter(
       r => this.accordionItems[r].id === id,
     )[0]
@@ -123,7 +123,7 @@ export class Fanfare extends PureComponent<Props, State> {
       activeAccordions,
       onClick: this.handleClick,
       onKeyDown: this.handleKeyDown,
-      setHeaderRef: this.addRef,
+      setRef: this.setRef,
     }
   }
 
@@ -134,11 +134,8 @@ export class Fanfare extends PureComponent<Props, State> {
     return (
       <Accordion className={className}>
         {render({
-          getItemProps: this.getItemProps,
           activeAccordions,
-          onClick: this.handleClick,
-          onKeyDown: this.handleKeyDown,
-          setHeaderRef: this.addRef,
+          getItemProps: this.getItemProps,
         })}
       </Accordion>
     )
