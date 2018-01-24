@@ -1,6 +1,6 @@
 // @flow
 
-import React from 'react'
+import React, { PureComponent } from 'react'
 import type { Node } from 'react'
 
 type Props = {
@@ -8,6 +8,10 @@ type Props = {
   className?: string,
 }
 
-export const Header = ({ children, className }: Props) => (
-  <dt className={className}>{children}</dt>
-)
+export class Header extends PureComponent<Props> {
+  render() {
+    const { children, className } = this.props
+
+    return <dt className={className}>{children}</dt>
+  }
+}
