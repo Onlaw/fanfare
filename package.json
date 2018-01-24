@@ -1,0 +1,41 @@
+{
+  "name": "fanfare",
+  "version": "0.2.0",
+  "license": "MIT",
+  "repository": "onlaw/fanfare",
+  "main": "dist/fanfare.umd.js",
+  "module": "dist/fanfare.esm.js",
+  "sideEffects": false,
+  "keywords": [
+    "react"
+  ],
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "rollup -c",
+    "flow": "flow"
+  },
+  "peerDependencies": {
+    "react": ">=16"
+  },
+  "devDependencies": {
+    "@babel/core": "7.0.0-beta.38",
+    "@babel/plugin-external-helpers": "7.0.0-beta.38",
+    "@babel/plugin-proposal-class-properties": "7.0.0-beta.38",
+    "@babel/plugin-proposal-object-rest-spread": "7.0.0-beta.38",
+    "@babel/preset-env": "7.0.0-beta.38",
+    "@babel/preset-flow": "7.0.0-beta.38",
+    "@babel/preset-react": "7.0.0-beta.38",
+    "flow-bin": "0.63.1",
+    "rollup": "0.55.0",
+    "rollup-plugin-babel": "4.0.0-beta.0"
+  },
+  "renovate": {
+    "pinVersions": true,
+    "semanticCommits": true,
+    "prCreation": "not-pending",
+    "automerge": "minor",
+    "unpublishSafe": true
+  }
+}
