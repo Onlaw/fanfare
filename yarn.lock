@@ -218,9 +218,9 @@
   version "7.0.0-beta.38"
   resolved "https://registry.yarnpkg.com/@babel/plugin-check-constants/-/plugin-check-constants-7.0.0-beta.38.tgz#bbda6306d45a4f097ccb416c0b52d6503f6502cf"
 
-"@babel/plugin-external-helpers@7.0.0-beta.38":
-  version "7.0.0-beta.38"
-  resolved "https://registry.yarnpkg.com/@babel/plugin-external-helpers/-/plugin-external-helpers-7.0.0-beta.38.tgz#d828af3feb2ad2188386572100817d470788064c"
+"@babel/plugin-external-helpers@7.0.0-beta.39":
+  version "7.0.0-beta.39"
+  resolved "https://registry.yarnpkg.com/@babel/plugin-external-helpers/-/plugin-external-helpers-7.0.0-beta.39.tgz#9e8c801d67fdeeff714bca97c7c37635497ea9eb"
 
 "@babel/plugin-proposal-async-generator-functions@7.0.0-beta.38":
   version "7.0.0-beta.38"
