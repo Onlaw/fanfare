@@ -241,11 +241,11 @@
     esutils "^2.0.2"
     js-tokens "^3.0.0"
 
-"@babel/plugin-external-helpers@7.0.0-beta.41":
-  version "7.0.0-beta.41"
-  resolved "https://registry.yarnpkg.com/@babel/plugin-external-helpers/-/plugin-external-helpers-7.0.0-beta.41.tgz#22b9e94196eed4a3307d2822810bc81e41b1b24b"
+"@babel/plugin-external-helpers@7.0.0-beta.42":
+  version "7.0.0-beta.42"
+  resolved "https://registry.yarnpkg.com/@babel/plugin-external-helpers/-/plugin-external-helpers-7.0.0-beta.42.tgz#88b6bc650490026553aaa1733486d84bad177481"
   dependencies:
-    "@babel/helper-plugin-utils" "7.0.0-beta.41"
+    "@babel/helper-plugin-utils" "7.0.0-beta.42"
 
 "@babel/plugin-proposal-async-generator-functions@7.0.0-beta.40":
   version "7.0.0-beta.40"
