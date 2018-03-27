@@ -8,6 +8,8 @@ type Props = {
   className?: string,
 }
 
-export const Panel = ({ children, className }: Props) => (
-  <dd className={className}>{children}</dd>
+export const Panel = ({ children, className, ...props }: Props) => (
+  <dd className={className} {...props}>
+    {children}
+  </dd>
 )

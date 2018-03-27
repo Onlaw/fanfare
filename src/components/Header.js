@@ -10,8 +10,12 @@ type Props = {
 
 export class Header extends PureComponent<Props> {
   render() {
-    const { children, className } = this.props
+    const { children, className, ...props } = this.props
 
-    return <dt className={className}>{children}</dt>
+    return (
+      <dt className={className} {...props}>
+        {children}
+      </dt>
+    )
   }
 }

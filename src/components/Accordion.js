@@ -8,8 +8,8 @@ type Props = {
   className?: string,
 }
 
-export const Accordion = ({ children, className }: Props) => (
-  <dl className={className} role="presentation">
+export const Accordion = ({ children, className, ...props }: Props) => (
+  <dl className={className} {...props} role="presentation">
     {children}
   </dl>
 )
