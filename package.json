@@ -20,16 +20,17 @@
     "react": ">=15.3"
   },
   "devDependencies": {
-    "@babel/core": "7.0.0-beta.38",
-    "@babel/plugin-external-helpers": "7.0.0-beta.38",
-    "@babel/plugin-proposal-class-properties": "7.0.0-beta.38",
-    "@babel/plugin-proposal-object-rest-spread": "7.0.0-beta.38",
-    "@babel/preset-env": "7.0.0-beta.38",
-    "@babel/preset-flow": "7.0.0-beta.38",
-    "@babel/preset-react": "7.0.0-beta.38",
-    "flow-bin": "0.63.1",
-    "rollup": "0.55.0",
-    "rollup-plugin-babel": "4.0.0-beta.0"
+    "@babel/core": "7.0.0-beta.42",
+    "@babel/plugin-external-helpers": "7.0.0-beta.42",
+    "@babel/plugin-proposal-class-properties": "7.0.0-beta.42",
+    "@babel/plugin-proposal-object-rest-spread": "7.0.0-beta.42",
+    "@babel/preset-env": "7.0.0-beta.42",
+    "@babel/preset-flow": "7.0.0-beta.42",
+    "@babel/preset-react": "7.0.0-beta.39",
+    "@babel/preset-react": "7.0.0-beta.42",
+    "flow-bin": "0.68.0",
+    "rollup": "0.57.1",
+    "rollup-plugin-babel": "4.0.0-beta.3"
   },
   "renovate": {
     "pinVersions": true,
