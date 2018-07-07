@@ -33,10 +33,11 @@
     "rollup-plugin-babel": "4.0.0-beta.3"
   },
   "renovate": {
-    "pinVersions": true,
-    "semanticCommits": true,
-    "prCreation": "not-pending",
     "automerge": "minor",
+    "ignoreDeps": ["react"],
+    "pinVersions": true,
+    "prCreation": "not-pending",
+    "semanticCommits": true,
     "unpublishSafe": true
   }
 }
