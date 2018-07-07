@@ -29,7 +29,7 @@
     "@babel/preset-react": "7.0.0-beta.39",
     "@babel/preset-react": "7.0.0-beta.52",
     "flow-bin": "0.69.0",
-    "rollup": "0.57.1",
+    "rollup": "0.62.0",
     "rollup-plugin-babel": "4.0.0-beta.3"
   },
   "renovate": {
