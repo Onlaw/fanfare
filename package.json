@@ -27,7 +27,7 @@
     "@babel/preset-env": "7.0.0-beta.52",
     "@babel/preset-flow": "7.0.0-beta.53",
     "@babel/preset-react": "7.0.0-beta.39",
-    "@babel/preset-react": "7.0.0-beta.52",
+    "@babel/preset-react": "7.0.0-beta.53",
     "flow-bin": "0.76.0",
     "rollup": "0.62.0",
     "rollup-plugin-babel": "4.0.0-beta.7"
