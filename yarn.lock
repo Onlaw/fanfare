@@ -261,11 +261,11 @@
   version "7.0.0-beta.54"
   resolved "https://registry.yarnpkg.com/@babel/parser/-/parser-7.0.0-beta.54.tgz#c01aa63b57c9c8dce8744796c81d9df121f20db4"
 
-"@babel/plugin-external-helpers@7.0.0-beta.53":
-  version "7.0.0-beta.53"
-  resolved "https://registry.yarnpkg.com/@babel/plugin-external-helpers/-/plugin-external-helpers-7.0.0-beta.53.tgz#58c308627e1c057377e1e871a6a27dd3808d2db7"
+"@babel/plugin-external-helpers@7.0.0-beta.54":
+  version "7.0.0-beta.54"
+  resolved "https://registry.yarnpkg.com/@babel/plugin-external-helpers/-/plugin-external-helpers-7.0.0-beta.54.tgz#14b1eae9a5b491acad878e5fbba59a81ed3ac4ce"
   dependencies:
-    "@babel/helper-plugin-utils" "7.0.0-beta.53"
+    "@babel/helper-plugin-utils" "7.0.0-beta.54"
 
 "@babel/plugin-proposal-async-generator-functions@7.0.0-beta.53":
   version "7.0.0-beta.53"
