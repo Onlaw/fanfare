@@ -26,7 +26,6 @@
     "@babel/plugin-proposal-object-rest-spread": "7.0.0-beta.54",
     "@babel/preset-env": "7.0.0-beta.54",
     "@babel/preset-flow": "7.0.0-beta.54",
-    "@babel/preset-react": "7.0.0-beta.39",
     "@babel/preset-react": "7.0.0-beta.54",
     "flow-bin": "0.76.0",
     "rollup": "0.62.0",
