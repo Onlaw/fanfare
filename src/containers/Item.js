@@ -1,22 +1,20 @@
 // @flow
 
-import { PureComponent } from 'react'
+import { Component } from 'react'
 import type { Node } from 'react'
 
-type Props = {
+export class Item extends Component<{
   activeAccordions: Array<string | number>,
+  children: ({
+    getButtonProps: Function,
+    getPanelProps: Function,
+  }) => Node,
   id: string | number,
   startOpen?: boolean,
   onClick: (id: string | number) => void,
   onKeyDown: () => void,
-  render: ({
-    getButtonProps: Function,
-    getPanelProps: Function,
-  }) => Node,
   setRef: (id: string | number, ref: HTMLButtonElement) => void,
-}
-
-export class Item extends PureComponent<Props> {
+}> {
   componentDidMount() {
     const { id, startOpen, onClick } = this.props
 
@@ -55,7 +53,7 @@ export class Item extends PureComponent<Props> {
   }
 
   render() {
-    return this.props.render({
+    return this.props.children({
       getButtonProps: this.getButtonProps,
       getPanelProps: this.getPanelProps,
     })

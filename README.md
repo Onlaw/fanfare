@@ -24,15 +24,12 @@ With React 16.2 fragments:
 import { Fanfare, Item, Header, Panel } from 'fanfare'
 
 const App = () => (
-  <Fanfare
-    allowMultiple
-    render={({ getItemProps }) => (
-      <>
-        <Item
-          id="first"
-          {...getItemProps()}
-          render={({ getHeaderProps, getPanelProps }) => (
-            <>
+  <Fanfare allowMultiple>
+    {({ getItemProps }) => (
+      <Fragment>
+        <Item id="first" {...getItemProps()}>
+          {({ getHeaderProps, getPanelProps }) => (
+            <Fragment>
               <Header {...getHeaderProps()}>
                 <div>First accordion item</div>
               </Header>
@@ -40,15 +37,13 @@ const App = () => (
               <Panel {...getPanelProps()}>
                 <div>Hidden accordion content</div>
               </Panel>
-            </>
+            </Fragment>
           )}
-        />
+        </Item>
 
-        <Item
-          id="second"
-          {...getItemProps()}
-          render={({ getHeaderProps, getPanelProps }) => (
-            <>
+        <Item id="second" {...getItemProps()}>
+          {({ getHeaderProps, getPanelProps }) => (
+            <Fragment>
               <Header {...getHeaderProps()}>
                 <div>Second accordion item</div>
               </Header>
@@ -56,12 +51,12 @@ const App = () => (
               <Panel {...getPanelProps()}>
                 <div>Other hidden accordion content</div>
               </Panel>
-            </>
+            </Fragment>
           )}
-        />
-      </>
+        </Item>
+      </Fragment>
     )}
-  />
+  </Fanfare>
 )
 ```
 
@@ -73,7 +68,7 @@ const App = () => (
 
 Determines whether or not to allow multiple accordion items to be opened at the same time. Unless set to `true`, the accordion will default to only allowing one open item at a time.
 
-### render
+### children
 
 > `function` | required
 

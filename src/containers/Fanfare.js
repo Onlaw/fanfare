@@ -1,21 +1,20 @@
 // @flow
 
-import React, { PureComponent } from 'react'
+import React, { Component } from 'react'
 import { Accordion } from '../components/Accordion'
 import type { Node } from 'react'
 
-type Props = {
-  className?: string,
-  allowMultiple: boolean,
-  activeAccordions: Array<string | number>,
-  render: ({ getItemProps: Function }) => Node,
-}
-
-type State = {
-  activeAccordions: Array<string | number>,
-}
-
-export class Fanfare extends PureComponent<Props, State> {
+export class Fanfare extends Component<
+  {
+    className?: string,
+    allowMultiple: boolean,
+    activeAccordions: Array<string | number>,
+    children: ({ getItemProps: Function }) => Node,
+  },
+  {
+    activeAccordions: Array<string | number>,
+  },
+> {
   state = { activeAccordions: this.props.activeAccordions || [] }
 
   accordionItems = {}
@@ -128,12 +127,12 @@ export class Fanfare extends PureComponent<Props, State> {
   }
 
   render() {
-    const { className, render } = this.props
+    const { children, className } = this.props
     const { activeAccordions } = this.state
 
     return (
       <Accordion className={className}>
-        {render({
+        {children({
           activeAccordions,
           getItemProps: this.getItemProps,
         })}
