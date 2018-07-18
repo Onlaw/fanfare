@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react';
+import React, { Component } from 'react';
 
 function _classCallCheck(instance, Constructor) {
   if (!(instance instanceof Constructor)) {
@@ -22,6 +22,21 @@ function _createClass(Constructor, protoProps, staticProps) {
   return Constructor;
 }
 
+function _defineProperty(obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
+  }
+
+  return obj;
+}
+
 function _extends() {
   _extends = Object.assign || function (target) {
     for (var i = 1; i < arguments.length; i++) {
@@ -40,6 +55,25 @@ function _extends() {
   return _extends.apply(this, arguments);
 }
 
+function _objectSpread(target) {
+  for (var i = 1; i < arguments.length; i++) {
+    var source = arguments[i] != null ? arguments[i] : {};
+    var ownKeys = Object.keys(source);
+
+    if (typeof Object.getOwnPropertySymbols === 'function') {
+      ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {
+        return Object.getOwnPropertyDescriptor(source, sym).enumerable;
+      }));
+    }
+
+    ownKeys.forEach(function (key) {
+      _defineProperty(target, key, source[key]);
+    });
+  }
+
+  return target;
+}
+
 function _inherits(subClass, superClass) {
   if (typeof superClass !== "function" && superClass !== null) {
     throw new TypeError("Super expression must either be null or a function");
@@ -48,15 +82,30 @@ function _inherits(subClass, superClass) {
   subClass.prototype = Object.create(superClass && superClass.prototype, {
     constructor: {
       value: subClass,
-      enumerable: false,
       writable: true,
       configurable: true
     }
   });
-  if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
+  if (superClass) _setPrototypeOf(subClass, superClass);
 }
 
-function _objectWithoutProperties(source, excluded) {
+function _getPrototypeOf(o) {
+  _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) {
+    return o.__proto__ || Object.getPrototypeOf(o);
+  };
+  return _getPrototypeOf(o);
+}
+
+function _setPrototypeOf(o, p) {
+  _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) {
+    o.__proto__ = p;
+    return o;
+  };
+
+  return _setPrototypeOf(o, p);
+}
+
+function _objectWithoutPropertiesLoose(source, excluded) {
   if (source == null) return {};
   var target = {};
   var sourceKeys = Object.keys(source);
@@ -67,6 +116,16 @@ function _objectWithoutProperties(source, excluded) {
     if (excluded.indexOf(key) >= 0) continue;
     target[key] = source[key];
   }
+
+  return target;
+}
+
+function _objectWithoutProperties(source, excluded) {
+  if (source == null) return {};
+
+  var target = _objectWithoutPropertiesLoose(source, excluded);
+
+  var key, i;
 
   if (Object.getOwnPropertySymbols) {
     var sourceSymbolKeys = Object.getOwnPropertySymbols(source);
@@ -95,41 +154,50 @@ function _possibleConstructorReturn(self, call) {
     return call;
   }
 
-  if (self === void 0) {
-    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
-  }
-
-  return self;
+  return _assertThisInitialized(self);
 }
 
 function _toConsumableArray(arr) {
+  return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread();
+}
+
+function _arrayWithoutHoles(arr) {
   if (Array.isArray(arr)) {
     for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) arr2[i] = arr[i];
 
     return arr2;
-  } else {
-    return Array.from(arr);
   }
+}
+
+function _iterableToArray(iter) {
+  if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter);
+}
+
+function _nonIterableSpread() {
+  throw new TypeError("Invalid attempt to spread non-iterable instance");
 }
 
 var Accordion = function Accordion(_ref) {
   var children = _ref.children,
-      className = _ref.className;
-  return React.createElement("dl", {
-    className: className,
+      className = _ref.className,
+      props = _objectWithoutProperties(_ref, ["children", "className"]);
+
+  return React.createElement("dl", _extends({
+    className: className
+  }, props, {
     role: "presentation"
-  }, children);
+  }), children);
 };
 
 var Fanfare =
 /*#__PURE__*/
-function (_PureComponent) {
-  _inherits(Fanfare, _PureComponent);
+function (_Component) {
+  _inherits(Fanfare, _Component);
 
   function Fanfare() {
-    var _ref;
+    var _getPrototypeOf2;
 
-    var _temp, _this;
+    var _this;
 
     _classCallCheck(this, Fanfare);
 
@@ -137,163 +205,144 @@ function (_PureComponent) {
       args[_key] = arguments[_key];
     }
 
-    return _possibleConstructorReturn(_this, (_temp = _this = _possibleConstructorReturn(this, (_ref = Fanfare.__proto__ || Object.getPrototypeOf(Fanfare)).call.apply(_ref, [this].concat(args))), Object.defineProperty(_assertThisInitialized(_this), "state", {
-      configurable: true,
-      enumerable: true,
-      writable: true,
-      value: {
-        activeAccordions: _this.props.activeAccordions || []
+    _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(Fanfare)).call.apply(_getPrototypeOf2, [this].concat(args)));
+
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "state", {
+      activeAccordions: _this.props.activeAccordions || []
+    });
+
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "accordionItems", {});
+
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "handleClick", function (id) {
+      _this.toggleAccordion(id);
+    });
+
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "handleKeyDown", function (e) {
+      // @todo: There has to be a better way to do this!
+      var focusedElement = document.activeElement;
+      var focusedAccordion;
+
+      if (focusedElement) {
+        focusedAccordion = focusedElement.tagName === 'BUTTON' ? focusedElement : focusedElement.parentElement;
       }
-    }), Object.defineProperty(_assertThisInitialized(_this), "accordionItems", {
-      configurable: true,
-      enumerable: true,
-      writable: true,
-      value: {}
-    }), Object.defineProperty(_assertThisInitialized(_this), "handleClick", {
-      configurable: true,
-      enumerable: true,
-      writable: true,
-      value: function value(id) {
-        _this.toggleAccordion(id);
-      }
-    }), Object.defineProperty(_assertThisInitialized(_this), "handleKeyDown", {
-      configurable: true,
-      enumerable: true,
-      writable: true,
-      value: function value(e) {
-        // @todo: There has to be a better way to do this!
-        var focusedElement = document.activeElement;
-        var focusedAccordion;
 
-        if (focusedElement) {
-          focusedAccordion = focusedElement.tagName === 'BUTTON' ? focusedElement : focusedElement.parentElement;
-        }
+      var currentIndex = parseInt(Object.keys(_this.accordionItems).filter(function (i) {
+        return _this.accordionItems[i].ref === focusedAccordion;
+      }), 10);
 
-        var currentIndex = parseInt(Object.keys(_this.accordionItems).filter(function (i) {
-          return _this.accordionItems[i].ref === focusedAccordion;
-        }), 10);
+      if (e.key === 'ArrowUp' || e.key === 'ArrowDown') {
+        e.preventDefault();
+        var moveIndexAmount = e.key === 'ArrowUp' ? -1 : 1;
 
-        if (e.key === 'ArrowUp' || e.key === 'ArrowDown') {
-          e.preventDefault();
-          var moveIndexAmount = e.key === 'ArrowUp' ? -1 : 1;
+        var indexToFocus = _this.cycleAccordionIndex(currentIndex, moveIndexAmount);
 
-          var indexToFocus = _this.cycleAccordionIndex(currentIndex, moveIndexAmount);
-
-          if (indexToFocus) {
-            _this.accordionItems[indexToFocus].ref.focus();
-          }
+        if (indexToFocus) {
+          _this.accordionItems[indexToFocus].ref.focus();
         }
       }
-    }), Object.defineProperty(_assertThisInitialized(_this), "setRef", {
-      configurable: true,
-      enumerable: true,
-      writable: true,
-      value: function value(id, ref) {
-        var existingReference = Object.keys(_this.accordionItems).filter(function (r) {
-          return _this.accordionItems[r].id === id;
-        })[0];
+    });
 
-        if (!existingReference) {
-          // Subtract 1 to stay zero-based
-          var numberOfRefs = Object.keys(_this.accordionItems).length - 1;
-          _this.accordionItems[numberOfRefs + 1] = {
-            id: id,
-            ref: ref
-          };
-        }
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "setRef", function (id, ref) {
+      var existingReference = Object.keys(_this.accordionItems).filter(function (r) {
+        return _this.accordionItems[r].id === id;
+      })[0];
+
+      if (!existingReference) {
+        // Subtract 1 to stay zero-based
+        var numberOfRefs = Object.keys(_this.accordionItems).length - 1;
+        _this.accordionItems[numberOfRefs + 1] = {
+          id: id,
+          ref: ref
+        };
       }
-    }), Object.defineProperty(_assertThisInitialized(_this), "cycleAccordionIndex", {
-      configurable: true,
-      enumerable: true,
-      writable: true,
-      value: function value(currentIndex, amount) {
-        var lastIndex = Object.keys(_this.accordionItems).length - 1;
+    });
 
-        if (lastIndex < 0) {
-          return;
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "cycleAccordionIndex", function (currentIndex, amount) {
+      var lastIndex = Object.keys(_this.accordionItems).length - 1;
+
+      if (lastIndex < 0) {
+        return;
+      }
+
+      if (currentIndex === null) {
+        currentIndex = amount > 0 ? -1 : lastIndex + 1;
+      }
+
+      var newIndex = currentIndex + amount;
+
+      if (newIndex < 0) {
+        newIndex = lastIndex;
+      } else if (newIndex > lastIndex) {
+        newIndex = 0;
+      }
+
+      return newIndex;
+    });
+
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "toggleAccordion", function (id) {
+      _this.setState(function (state) {
+        var activeAccordions = state.activeAccordions;
+        var indexOf = activeAccordions.indexOf(id);
+
+        var accordionItems = _toConsumableArray(activeAccordions);
+
+        if (_this.props.allowMultiple) {
+          accordionItems = indexOf === -1 ? _toConsumableArray(activeAccordions).concat([id]) : activeAccordions.filter(function (i) {
+            return i !== id;
+          });
+        } else {
+          accordionItems = indexOf === -1 ? [id] : [];
         }
 
-        if (currentIndex === null) {
-          currentIndex = amount > 0 ? -1 : lastIndex + 1;
-        }
+        return {
+          activeAccordions: accordionItems
+        };
+      });
+    });
 
-        var newIndex = currentIndex + amount;
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "getItemProps", function (_ref) {
+      var props = _extends({}, _ref);
 
-        if (newIndex < 0) {
-          newIndex = lastIndex;
-        } else if (newIndex > lastIndex) {
-          newIndex = 0;
-        }
+      var activeAccordions = _this.state.activeAccordions;
+      return _objectSpread({}, props, {
+        activeAccordions: activeAccordions,
+        onClick: _this.handleClick,
+        onKeyDown: _this.handleKeyDown,
+        setRef: _this.setRef
+      });
+    });
 
-        return newIndex;
-      }
-    }), Object.defineProperty(_assertThisInitialized(_this), "toggleAccordion", {
-      configurable: true,
-      enumerable: true,
-      writable: true,
-      value: function value(id) {
-        _this.setState(function (state) {
-          var activeAccordions = state.activeAccordions;
-          var indexOf = activeAccordions.indexOf(id);
-          var accordionItems = _toConsumableArray(activeAccordions);
-
-          if (_this.props.allowMultiple) {
-            accordionItems = indexOf === -1 ? _toConsumableArray(activeAccordions).concat([id]) : activeAccordions.filter(function (i) {
-              return i !== id;
-            });
-          } else {
-            accordionItems = indexOf === -1 ? [id] : [];
-          }
-
-          return {
-            activeAccordions: accordionItems
-          };
-        });
-      }
-    }), Object.defineProperty(_assertThisInitialized(_this), "getItemProps", {
-      configurable: true,
-      enumerable: true,
-      writable: true,
-      value: function value(_ref2) {
-        var props = _objectWithoutProperties(_ref2, []);
-        var activeAccordions = _this.state.activeAccordions;
-        return _extends({}, props, {
-          activeAccordions: activeAccordions,
-          onClick: _this.handleClick,
-          onKeyDown: _this.handleKeyDown,
-          setRef: _this.setRef
-        });
-      }
-    }), _temp));
+    return _this;
   }
 
   _createClass(Fanfare, [{
     key: "render",
     value: function render() {
-      var _props = this.props,
-          className = _props.className,
-          render = _props.render;
+      var _this$props = this.props,
+          children = _this$props.children,
+          className = _this$props.className;
       var activeAccordions = this.state.activeAccordions;
       return React.createElement(Accordion, {
         className: className
-      }, render({
+      }, children({
         activeAccordions: activeAccordions,
         getItemProps: this.getItemProps
       }));
     }
   }]);
+
   return Fanfare;
-}(PureComponent);
+}(Component);
 
 var Item =
 /*#__PURE__*/
-function (_PureComponent) {
-  _inherits(Item, _PureComponent);
+function (_Component) {
+  _inherits(Item, _Component);
 
   function Item() {
-    var _ref;
+    var _getPrototypeOf2;
 
-    var _temp, _this;
+    var _this;
 
     _classCallCheck(this, Item);
 
@@ -301,67 +350,52 @@ function (_PureComponent) {
       args[_key] = arguments[_key];
     }
 
-    return _possibleConstructorReturn(_this, (_temp = _this = _possibleConstructorReturn(this, (_ref = Item.__proto__ || Object.getPrototypeOf(Item)).call.apply(_ref, [this].concat(args))), Object.defineProperty(_assertThisInitialized(_this), "getButtonProps", {
-      configurable: true,
-      enumerable: true,
-      writable: true,
-      value: function value() {
-        var _this$props = _this.props,
-            activeAccordions = _this$props.activeAccordions,
-            id = _this$props.id,
-            onClick = _this$props.onClick,
-            onKeyDown = _this$props.onKeyDown,
-            setRef = _this$props.setRef;
-        var isOpen = activeAccordions.includes(id);
-        return {
-          'aria-controls': "accordion-panel-".concat(id),
-          'aria-expanded': isOpen,
-          id: "accordion-".concat(id),
-          isOpen: isOpen,
-          onClick: function (_onClick) {
-            function onClick() {
-              return _onClick.apply(this, arguments);
-            }
+    _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(Item)).call.apply(_getPrototypeOf2, [this].concat(args)));
 
-            onClick.toString = function () {
-              return _onClick.toString();
-            };
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "getButtonProps", function () {
+      var _this$props = _this.props,
+          activeAccordions = _this$props.activeAccordions,
+          id = _this$props.id,
+          _onClick = _this$props.onClick,
+          onKeyDown = _this$props.onKeyDown,
+          setRef = _this$props.setRef;
+      var isOpen = activeAccordions.includes(id);
+      return {
+        'aria-controls': "accordion-panel-".concat(id),
+        'aria-expanded': isOpen,
+        id: "accordion-".concat(id),
+        isOpen: isOpen,
+        onClick: function onClick() {
+          _onClick(id);
+        },
+        onKeyDown: onKeyDown,
+        setRef: setRef
+      };
+    });
 
-            return onClick;
-          }(function () {
-            onClick(id);
-          }),
-          onKeyDown: onKeyDown,
-          // ref: (ref: HTMLButtonElement) => setRef(id, ref),
-          setRef: setRef
-        };
-      }
-    }), Object.defineProperty(_assertThisInitialized(_this), "getPanelProps", {
-      configurable: true,
-      enumerable: true,
-      writable: true,
-      value: function value() {
-        var _this$props2 = _this.props,
-            activeAccordions = _this$props2.activeAccordions,
-            id = _this$props2.id;
-        var isOpen = activeAccordions.includes(id);
-        return {
-          'aria-labelledby': "accordion-".concat(id),
-          id: "accordion-panel-".concat(id),
-          isOpen: isOpen,
-          role: 'region'
-        };
-      }
-    }), _temp));
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "getPanelProps", function () {
+      var _this$props2 = _this.props,
+          activeAccordions = _this$props2.activeAccordions,
+          id = _this$props2.id;
+      var isOpen = activeAccordions.includes(id);
+      return {
+        'aria-labelledby': "accordion-".concat(id),
+        id: "accordion-panel-".concat(id),
+        isOpen: isOpen,
+        role: 'region'
+      };
+    });
+
+    return _this;
   }
 
   _createClass(Item, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      var _props = this.props,
-          id = _props.id,
-          startOpen = _props.startOpen,
-          onClick = _props.onClick;
+      var _this$props3 = this.props,
+          id = _this$props3.id,
+          startOpen = _this$props3.startOpen,
+          onClick = _this$props3.onClick;
 
       if (startOpen) {
         onClick(id);
@@ -370,45 +404,52 @@ function (_PureComponent) {
   }, {
     key: "render",
     value: function render() {
-      return this.props.render({
+      return this.props.children({
         getButtonProps: this.getButtonProps,
         getPanelProps: this.getPanelProps
       });
     }
   }]);
+
   return Item;
-}(PureComponent);
+}(Component);
 
 var Header =
 /*#__PURE__*/
-function (_PureComponent) {
-  _inherits(Header, _PureComponent);
+function (_Component) {
+  _inherits(Header, _Component);
 
   function Header() {
     _classCallCheck(this, Header);
-    return _possibleConstructorReturn(this, (Header.__proto__ || Object.getPrototypeOf(Header)).apply(this, arguments));
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(Header).apply(this, arguments));
   }
 
   _createClass(Header, [{
     key: "render",
     value: function render() {
-      var _props = this.props,
-          children = _props.children,
-          className = _props.className;
-      return React.createElement("dt", {
+      var _this$props = this.props,
+          children = _this$props.children,
+          className = _this$props.className,
+          props = _objectWithoutProperties(_this$props, ["children", "className"]);
+
+      return React.createElement("dt", _extends({
         className: className
-      }, children);
+      }, props), children);
     }
   }]);
+
   return Header;
-}(PureComponent);
+}(Component);
 
 var Panel = function Panel(_ref) {
   var children = _ref.children,
-      className = _ref.className;
-  return React.createElement("dd", {
+      className = _ref.className,
+      props = _objectWithoutProperties(_ref, ["children", "className"]);
+
+  return React.createElement("dd", _extends({
     className: className
-  }, children);
+  }, props), children);
 };
 
 export { Fanfare, Item, Header, Panel };
