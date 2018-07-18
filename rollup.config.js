@@ -1,4 +1,5 @@
 import babel from 'rollup-plugin-babel'
+import { terser } from 'rollup-plugin-terser'
 import pkg from './package.json'
 
 export default {
@@ -14,5 +15,5 @@ export default {
     },
   ],
   external: ['react', 'react-dom'],
-  plugins: [babel({ exclude: 'node_modules/**' })],
+  plugins: [babel({ exclude: 'node_modules/**' }), terser()],
 }
