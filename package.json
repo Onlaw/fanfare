@@ -27,7 +27,7 @@
     "@babel/preset-env": "7.1.0",
     "@babel/preset-flow": "7.0.0",
     "@babel/preset-react": "7.0.0",
-    "flow-bin": "0.81.0",
+    "flow-bin": "0.82.0",
     "rollup": "0.66.2",
     "rollup-plugin-babel": "4.0.3",
     "rollup-plugin-terser": "1.0.1"
