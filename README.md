@@ -1,3 +1,7 @@
+# Deprecation notice
+
+When Fanfare was developed, none of the other accordion libraries (that I could find) were ARIA compliant. That shouldn't be an issue any longer. I recommend giving https://github.com/springload/react-accessible-accordion a try instead. 
+
 # Fanfare 🎺
 
 A minimal, accessible accordion component for React using the [render prop pattern](https://reactjs.org/docs/render-props.html). Until version 1.0 is reached the API should be considered in development and subject to change.
