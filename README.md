@@ -1,6 +1,6 @@
 # Deprecation notice
 
-When Fanfare was developed, none of the other accordion libraries (that I could find) were ARIA compliant. That shouldn't be an issue any longer. I recommend giving https://github.com/springload/react-accessible-accordion a try instead. 
+When Fanfare was developed, none of the other accordion libraries (that I could find) were fully ARIA compliant. That should no longer be an issue. I recommend giving https://github.com/springload/react-accessible-accordion a try. 
 
 # Fanfare 🎺
 
